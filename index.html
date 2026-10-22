@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100d19">
+<meta name="description" content="NekoNime, direktori anime dari sumber resmi.">
+<title>NekoNime — Anime Legal</title>
+<style>
+:root {
+  --bg:#100d19;
+  --panel:#1c1728;
+  --purple:#a78bfa;
+  --text:#f8f6ff;
+  --muted:#b8b0c9;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,sans-serif;
+}
+header {
+  padding:18px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid #30283e;
+}
+.logo { font-size:23px;font-weight:900; }
+.logo span { color:var(--purple); }
+header a { color:white;text-decoration:none;font-size:13px; }
+main { max-width:1100px;margin:auto;padding:24px 5%; }
+.hero {
+  padding:35px 22px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#35204f,#171226 75%);
+}
+.hero small { color:#d4bfff;font-weight:700; }
+h1 { font-size:clamp(30px,7vw,48px);margin:12px 0; }
+p { color:var(--muted);line-height:1.65; }
+.search {
+  width:100%;margin-top:14px;padding:14px;
+  border:1px solid #493d60;border-radius:12px;
+  background:var(--panel);color:white;font-size:16px;
+}
+.filters { display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px; }
+.filters button,.watch {
+  border:0;border-radius:10px;padding:10px 14px;
+  background:#30253f;color:white;cursor:pointer;
+}
+.filters button.active { background:var(--purple);color:#171022; }
+h2 { margin-top:30px; }
+.catalog {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.card {
+  background:var(--panel);border:1px solid #30283e;
+  border-radius:15px;overflow:hidden;min-width:0;
+}
+.poster {
+  height:135px;display:flex;align-items:center;
+  justify-content:center;text-align:center;padding:12px;
+  font-size:24px;font-weight:900;
+  background:linear-gradient(145deg,#6545a0,#25203b);
+}
+.card:nth-child(2) .poster { background:linear-gradient(145deg,#315c79,#191c35); }
+.card:nth-child(3) .poster { background:linear-gradient(145deg,#87513f,#2b1c2c); }
+.card:nth-child(4) .poster { background:linear-gradient(145deg,#366b58,#192a30); }
+.info { padding:13px; }
+.info h3 { font-size:16px;margin:0 0 8px; }
+.info p { font-size:12px;margin:7px 0 12px; }
+.tag { color:#d4bfff;font-size:11px; }
+.watch {
+  display:block;text-align:center;text-decoration:none;
+  background:var(--purple);color:#171022;font-weight:800;
+  font-size:13px;
+}
+.note {
+  padding:15px;background:#201a2c;border-radius:12px;
+  font-size:13px;
+}
+footer {
+  padding:25px 5%;text-align:center;
+  border-top:1px solid #30283e;font-size:12px;
+  color:var(--muted);
+}
+@media(min-width:650px) {
+  .catalog { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .poster { height:200px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🐱 Neko<span>Nime</span></div>
+  <a href="https://www.youtube.com/@museindonesia"
+     target="_blank" rel="noopener">Kanal resmi ↗</a>
+</header>
+
+<main>
+  <section class="hero">
+    <small>ANIME • SUMBER RESMI • INDONESIA</small>
+    <h1>Dunia anime,<br>di satu tempat.</h1>
+    <p>
+      Temukan anime favoritmu dan lanjutkan menonton
+      melalui kanal resmi yang menyediakan tayangan tersebut.
+    </p>
+    <input id="search" class="search" type="search"
+      placeholder="Cari judul anime..."
+      aria-label="Cari anime">
+  </section>
+
+  <h2>Katalog anime</h2>
+  <div class="filters" aria-label="Filter genre">
+    <button class="active" data-genre="Semua">Semua</button>
+    <button data-genre="Aksi">Aksi</button>
+    <button data-genre="Fantasi">Fantasi</button>
+    <button data-genre="Komedi">Komedi</button>
+  </div>
+
+  <section id="catalog" class="catalog">
+    <article class="card" data-title="anime pilihan 1"
+      data-genre="Aksi">
+      <div class="poster">ANIME 01</div>
+      <div class="info">
+        <span class="tag">AKSI</span>
+        <h3>Anime Pilihan 1</h3>
+        <p>Ganti judul dan deskripsi dengan anime yang tersedia secara resmi.</p>
+        <a class="watch"
+          href="https://www.youtube.com/@museindonesia"
+          target="_blank" rel="noopener">Cari di kanal resmi ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-title="anime pilihan 2"
+      data-genre="Fantasi">
+      <div class="poster">ANIME 02</div>
+      <div class="info">
+        <span class="tag">FANTASI</span>
+        <h3>Anime Pilihan 2</h3>
+        <p>Tambahkan informasi judul yang benar-benar tersedia di kanal resmi.</p>
+        <a class="watch"
+          href="https://www.youtube.com/@museindonesia"
+          target="_blank" rel="noopener">Cari di kanal resmi ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-title="anime pilihan 3"
+      data-genre="Komedi">
+      <div class="poster">ANIME 03</div>
+      <div class="info">
+        <span class="tag">KOMEDI</span>
+        <h3>Anime Pilihan 3</h3>
+        <p>Gunakan deskripsi singkat milikmu sendiri.</p>
+        <a class="watch"
+          href="https://www.youtube.com/@museindonesia"
+          target="_blank" rel="noopener">Cari di kanal resmi ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-title="anime pilihan 4"
+      data-genre="Aksi">
+      <div class="poster">ANIME 04</div>
+      <div class="info">
+        <span class="tag">AKSI</span>
+        <h3>Anime Pilihan 4</h3>
+        <p>Periksa ketersediaan judul dan subtitle Indonesia.</p>
+        <a class="watch"
+          href="https://www.youtube.com/@museindonesia"
+          target="_blank" rel="noopener">Cari di kanal resmi ↗</a>
+      </div>
+    </article>
+  </section>
+
+  <p id="empty" hidden>Anime tidak ditemukan.</p>
+
+  <h2>Tentang NekoNime</h2>
+  <div class="note">
+    NekoNime adalah direktori untuk menemukan tayangan anime
+    dari sumber resmi. Video tetap ditonton melalui platform
+    pemilik atau distributor resmi. NekoNime bukan pemilik
+    anime yang tercantum.
+  </div>
+</main>
+
+<footer>
+  © 2026 NekoNime • Dibuat untuk proyek pembelajaran.
+  Semua hak atas anime milik pemegang hak masing-masing.
+</footer>
+
+<script>
+const search = document.getElementById('search');
+const cards = [...document.querySelectorAll('.card')];
+const buttons = [...document.querySelectorAll('[data-genre]')];
+let genre = 'Semua';
+
+function updateCatalog() {
+  const query = search.value.toLowerCase().trim();
+  let count = 0;
+  cards.forEach(card => {
+    const title = card.dataset.title;
+    const name = card.querySelector('h3').textContent.toLowerCase();
+    const matchText = title.includes(query) || name.includes(query);
+    const matchGenre = genre === 'Semua' ||
+      card.dataset.genre === genre;
+    card.hidden = !(matchText && matchGenre);
+    if (!card.hidden) count++;
+  });
+  document.getElementById('empty').hidden = count !== 0;
+}
+
+search.addEventListener('input', updateCatalog);
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    genre = button.dataset.genre;
+    buttons.forEach(b => b.classList.toggle('active', b === button));
+    updateCatalog();
+  });
+});
+</script>
+</body>
+  </html>
+  
