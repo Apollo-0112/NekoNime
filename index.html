@@ -223,6 +223,61 @@ buttons.forEach(button => {
     updateCatalog();
   });
 });
+
+const animeEpisodes = {
+  anime1: {
+    title: "Judul Anime Pertama",
+    episodes: [
+      {
+        title: "Episode 1",
+        url: "https://youtu.be/d-YhneE37J4?si=FoPtWf41frMbfXXb"
+        
+      },
+      {
+        title: "Episode 2",
+        url: "https://youtu.be/R2c91R160pM?si=7xndrTiOHQ-SG2-p"
+      },
+      {
+        title: "Episode 3",
+        url: "https://youtu.be/GEkP2DGZna8?si=Ox4tevRYT5-kxySJ"
+      }
+    ]
+  },
+
+  anime2: {
+    title: "Judul Anime Kedua",
+    episodes: [
+      {
+        title: "Episode 1",
+        url: "GANTI_DENGAN_LINK_VIDEO_ANIME_KEDUA"
+      }
+    ]
+  }
+};
+
+function showEpisodes(animeId) {
+  const anime = animeEpisodes[animeId];
+  if (!anime) return;
+
+  document.getElementById("episodeTitle").textContent =
+    anime.title + " — Daftar Episode";
+
+  const list = document.getElementById("episodeList");
+  list.replaceChildren();
+
+  anime.episodes.forEach(episode => {
+    const link = document.createElement("a");
+    link.textContent = "▶ " + episode.title;
+    link.href = episode.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    list.appendChild(link);
+  });
+
+  const section = document.getElementById("episodeSection");
+  section.hidden = false;
+  section.scrollIntoView({ behavior: "smooth" });
+  }
 </script>
 </body>
   </html>
