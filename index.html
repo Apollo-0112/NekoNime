@@ -380,37 +380,30 @@ function playEpisode(index) {
   const player = document.getElementById("player");
   player.innerHTML = "";
 
-  if (!episode.videoId.trim()) {
-    const placeholder = document.createElement("div");
-    placeholder.className = "player-placeholder";
-    placeholder.textContent =
-      episode.title + " dipilih. ID video resmi belum diisi. " +
-      "Tambahkan ID video pada data anime di index.html.";
-    player.append(placeholder);
+  if (!episode.videoId || !episode.videoId.trim()) {
+    player.textContent = "Tautan episode belum tersedia.";
     return;
   }
 
-  // Hanya menerima ID video, bukan URL sembarang.
   if (!/^[a-zA-Z0-9_-]{11}$/.test(episode.videoId)) {
-    const placeholder = document.createElement("div");
-    placeholder.className = "player-placeholder";
-    placeholder.textContent =
-      "ID video tidak valid. Periksa kembali ID YouTube.";
-    player.append(placeholder);
+    player.textContent = "ID video YouTube tidak valid.";
     return;
   }
 
   const iframe = document.createElement("iframe");
-  iframe.src = "https://www.youtube-nocookie.com/embed/" +
+
+  iframe.src =
+    "https://www.youtube.com/embed/" +
     encodeURIComponent(episode.videoId);
+
   iframe.title = selectedAnime.title + " - " + episode.title;
   iframe.allow =
     "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
   iframe.allowFullscreen = true;
   iframe.referrerPolicy = "strict-origin-when-cross-origin";
-  player.append(iframe);
-}
 
+  player.appendChild(iframe);
+}
 document.getElementById("backButton").addEventListener("click", () => {
   detail.hidden = true;
   catalog.hidden = false;
