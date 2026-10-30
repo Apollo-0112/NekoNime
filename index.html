@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#100d19">
-<meta name="description" content="NekoNime, direktori anime dari sumber resmi.">
+<meta name="description" content="NekoNime - katalog anime dari sumber resmi.">
 <title>NekoNime — Anime Legal</title>
 <style>
 :root {
@@ -17,82 +16,115 @@
 }
 * { box-sizing:border-box; }
 body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
+  margin:0;background:var(--bg);color:var(--text);
   font-family:system-ui,-apple-system,sans-serif;
 }
 header {
-  padding:18px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  border-bottom:1px solid #30283e;
+  padding:17px 5%;display:flex;justify-content:space-between;
+  align-items:center;gap:12px;border-bottom:1px solid #30283e;
 }
 .logo { font-size:23px;font-weight:900; }
 .logo span { color:var(--purple); }
-header a { color:white;text-decoration:none;font-size:13px; }
+a { color:inherit; }
+header a { text-decoration:none;font-size:13px; }
 main { max-width:1100px;margin:auto;padding:24px 5%; }
 .hero {
-  padding:35px 22px;
-  border-radius:20px;
+  padding:30px 22px;border-radius:20px;
   background:linear-gradient(135deg,#35204f,#171226 75%);
 }
 .hero small { color:#d4bfff;font-weight:700; }
-h1 { font-size:clamp(30px,7vw,48px);margin:12px 0; }
+h1 { font-size:clamp(30px,7vw,45px);margin:12px 0; }
 p { color:var(--muted);line-height:1.65; }
 .search {
-  width:100%;margin-top:14px;padding:14px;
+  width:100%;padding:14px;margin-top:12px;
   border:1px solid #493d60;border-radius:12px;
   background:var(--panel);color:white;font-size:16px;
 }
-.filters { display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px; }
-.filters button,.watch {
-  border:0;border-radius:10px;padding:10px 14px;
-  background:#30253f;color:white;cursor:pointer;
+.filters { display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 25px; }
+button {
+  border:0;border-radius:10px;padding:11px 14px;
+  background:#30253f;color:white;font-size:14px;cursor:pointer;
 }
-.filters button.active { background:var(--purple);color:#171022; }
-h2 { margin-top:30px; }
+button:focus-visible,a:focus-visible {
+  outline:2px solid #d4bfff;outline-offset:3px;
+}
+.filters button.active,.primary {
+  background:var(--purple);color:#171022;font-weight:800;
+}
+h2 { margin-top:28px; }
 .catalog {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
 }
 .card {
   background:var(--panel);border:1px solid #30283e;
   border-radius:15px;overflow:hidden;min-width:0;
 }
 .poster {
-  height:135px;display:flex;align-items:center;
-  justify-content:center;text-align:center;padding:12px;
-  font-size:24px;font-weight:900;
+  min-height:125px;padding:12px;display:flex;
+  align-items:center;justify-content:center;text-align:center;
+  font-size:23px;font-weight:900;
   background:linear-gradient(145deg,#6545a0,#25203b);
 }
-.card:nth-child(2) .poster { background:linear-gradient(145deg,#315c79,#191c35); }
-.card:nth-child(3) .poster { background:linear-gradient(145deg,#87513f,#2b1c2c); }
-.card:nth-child(4) .poster { background:linear-gradient(145deg,#366b58,#192a30); }
-.info { padding:13px; }
-.info h3 { font-size:16px;margin:0 0 8px; }
-.info p { font-size:12px;margin:7px 0 12px; }
-.tag { color:#d4bfff;font-size:11px; }
-.watch {
-  display:block;text-align:center;text-decoration:none;
-  background:var(--purple);color:#171022;font-weight:800;
-  font-size:13px;
+.card:nth-child(2) .poster {
+  background:linear-gradient(145deg,#315c79,#191c35);
+}
+.card:nth-child(3) .poster {
+  background:linear-gradient(145deg,#87513f,#2b1c2c);
+}
+.card:nth-child(4) .poster {
+  background:linear-gradient(145deg,#366b58,#192a30);
+}
+.info { padding:12px; }
+.info h3 { font-size:15px;margin:7px 0; }
+.info p { font-size:12px; }
+.tag { color:#d4bfff;font-size:11px;font-weight:700; }
+.choose { width:100%;margin-top:5px; }
+.detail {
+  margin-top:30px;padding:18px;
+  border:1px solid #403451;border-radius:17px;
+  background:var(--panel);
+}
+.detail-head {
+  display:flex;justify-content:space-between;
+  align-items:center;gap:12px;
+}
+.detail-head h2 { margin:8px 0; }
+.episode-list {
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;margin-top:18px;
+}
+.episode {
+  text-align:left;background:#30253f;border:1px solid #493d60;
+  min-height:64px;
+}
+.episode span { display:block;font-size:12px;color:#c8bbdd;margin-top:5px; }
+.episode.active { background:var(--purple);color:#171022; }
+.episode.active span { color:#302044; }
+.player {
+  width:100%;aspect-ratio:16/9;background:#08070c;
+  border:1px solid #403451;border-radius:12px;overflow:hidden;
+  margin-top:18px;
+}
+.player iframe { width:100%;height:100%;border:0; }
+.player-placeholder {
+  height:100%;display:flex;align-items:center;
+  justify-content:center;text-align:center;padding:20px;
+  color:var(--muted);
 }
 .note {
-  padding:15px;background:#201a2c;border-radius:12px;
+  background:#201a2c;padding:15px;border-radius:12px;
   font-size:13px;
 }
+[hidden] { display:none !important; }
 footer {
   padding:25px 5%;text-align:center;
-  border-top:1px solid #30283e;font-size:12px;
-  color:var(--muted);
+  border-top:1px solid #30283e;color:var(--muted);font-size:12px;
 }
 @media(min-width:650px) {
   .catalog { grid-template-columns:repeat(4,minmax(0,1fr)); }
-  .poster { height:200px; }
+  .poster { min-height:190px; }
+  .episode-list { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
 </style>
 </head>
@@ -107,123 +139,300 @@ footer {
   <section class="hero">
     <small>ANIME • SUMBER RESMI • INDONESIA</small>
     <h1>Dunia anime,<br>di satu tempat.</h1>
-    <p>
-      Temukan anime favoritmu dan lanjutkan menonton
-      melalui kanal resmi yang menyediakan tayangan tersebut.
-    </p>
+    <p>Pilih anime, cari episode favorit, lalu tonton dari sumber resmi.</p>
     <input id="search" class="search" type="search"
       placeholder="Cari judul anime..."
       aria-label="Cari anime">
   </section>
 
   <h2>Katalog anime</h2>
-  <div class="filters" aria-label="Filter genre">
+  <div class="filters">
     <button class="active" data-genre="Semua">Semua</button>
     <button data-genre="Aksi">Aksi</button>
     <button data-genre="Fantasi">Fantasi</button>
     <button data-genre="Komedi">Komedi</button>
   </div>
 
-  <section id="catalog" class="catalog">
-    <article class="card" data-title="anime pilihan 1"
-      data-genre="Aksi">
-      <div class="poster">ANIME 01</div>
-      <div class="info">
-        <span class="tag">AKSI</span>
-        <h3>Anime Pilihan 1</h3>
-        <p>Ganti judul dan deskripsi dengan anime yang tersedia secara resmi.</p>
-        <a class="watch"
-          href="https://www.youtube.com/@museindonesia"
-          target="_blank" rel="noopener">Cari di kanal resmi ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-title="anime pilihan 2"
-      data-genre="Fantasi">
-      <div class="poster">ANIME 02</div>
-      <div class="info">
-        <span class="tag">FANTASI</span>
-        <h3>Anime Pilihan 2</h3>
-        <p>Tambahkan informasi judul yang benar-benar tersedia di kanal resmi.</p>
-        <a class="watch"
-          href="https://www.youtube.com/@museindonesia"
-          target="_blank" rel="noopener">Cari di kanal resmi ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-title="anime pilihan 3"
-      data-genre="Komedi">
-      <div class="poster">ANIME 03</div>
-      <div class="info">
-        <span class="tag">KOMEDI</span>
-        <h3>Anime Pilihan 3</h3>
-        <p>Gunakan deskripsi singkat milikmu sendiri.</p>
-        <a class="watch"
-          href="https://www.youtube.com/@museindonesia"
-          target="_blank" rel="noopener">Cari di kanal resmi ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-title="anime pilihan 4"
-      data-genre="Aksi">
-      <div class="poster">ANIME 04</div>
-      <div class="info">
-        <span class="tag">AKSI</span>
-        <h3>Anime Pilihan 4</h3>
-        <p>Periksa ketersediaan judul dan subtitle Indonesia.</p>
-        <a class="watch"
-          href="https://www.youtube.com/@museindonesia"
-          target="_blank" rel="noopener">Cari di kanal resmi ↗</a>
-      </div>
-    </article>
-  </section>
-
+  <section id="catalog" class="catalog"></section>
   <p id="empty" hidden>Anime tidak ditemukan.</p>
+
+  <section id="detail" class="detail" hidden>
+    <div class="detail-head">
+      <div>
+        <span id="detailGenre" class="tag"></span>
+        <h2 id="detailTitle">Judul anime</h2>
+      </div>
+      <button id="backButton">← Kembali</button>
+    </div>
+    <p id="detailDescription"></p>
+
+    <h3>Daftar episode</h3>
+    <p>Pilih episode yang ingin kamu tonton.</p>
+    <div id="episodes" class="episode-list"></div>
+
+    <h3 id="playerTitle">Pemutar video</h3>
+    <div id="player" class="player">
+      <div class="player-placeholder">
+        Pilih episode untuk memulai.
+      </div>
+    </div>
+    <p id="sourceInfo" class="note">
+      Video berasal dari sumber resmi yang dicantumkan.
+    </p>
+  </section>
 
   <h2>Tentang NekoNime</h2>
   <div class="note">
-    NekoNime adalah direktori untuk menemukan tayangan anime
-    dari sumber resmi. Video tetap ditonton melalui platform
-    pemilik atau distributor resmi. NekoNime bukan pemilik
-    anime yang tercantum.
+    NekoNime adalah direktori independen untuk menemukan anime
+    dari sumber resmi. Hak cipta video dan materi anime tetap
+    dimiliki pemegang hak masing-masing.
   </div>
 </main>
 
 <footer>
-  © 2026 NekoNime • Dibuat untuk proyek pembelajaran.
-  Semua hak atas anime milik pemegang hak masing-masing.
+  © 2026 NekoNime • Proyek pembelajaran.
+  Tidak berafiliasi dengan Muse Indonesia atau YouTube.
 </footer>
 
 <script>
-const search = document.getElementById('search');
-const cards = [...document.querySelectorAll('.card')];
-const buttons = [...document.querySelectorAll('[data-genre]')];
-let genre = 'Semua';
+/*
+  CARA MENAMBAH EPISODE:
+  1. Ganti judul anime contoh.
+  2. Ganti videoId dengan ID video YouTube resmi.
+  3. Isi source dengan nama kanal resmi.
+  4. Tambahkan objek episode jika diperlukan.
 
-function updateCatalog() {
+  Contoh ID video:
+  https://www.youtube.com/watch?v=AbCdEf12345
+  ID video adalah AbCdEf12345.
+  ID di atas hanya contoh format, bukan video sungguhan.
+*/
+
+const animeList = [
+  {
+    id: 1,
+    title: "Mushoku Tensei",
+    genre: "Aksi",
+    poster: "ANIME 01",
+    description: "Ganti dengan deskripsi anime yang sebenarnya.",
+    source: "Muse Indonesia",
+    episodes: [
+      { title: "Episode 1", videoId: "6N4n1q9s5NudhaDb_VIDEO_EPISODE_1" },
+      { title: "Episode 2", videoId: "QJEhrSWaH9kw5uPl_VIDEO_EPISODE_2" },
+      { title: "Episode 3", videoId: "-iICCCBhDCk2Tnwt_VIDEO_EPISODE_3" }
+    ]
+  },
+  {
+    id: 2,
+    title: "Anime Pilihan 2",
+    genre: "Fantasi",
+    poster: "ANIME 02",
+    description: "Ganti dengan deskripsi anime yang sebenarnya.",
+    source: "Muse Indonesia",
+    episodes: [
+      { title: "Episode 1", videoId: "" },
+      { title: "Episode 2", videoId: "" },
+      { title: "Episode 3", videoId: "" }
+    ]
+  },
+  {
+    id: 3,
+    title: "Anime Pilihan 3",
+    genre: "Komedi",
+    poster: "ANIME 03",
+    description: "Ganti dengan deskripsi anime yang sebenarnya.",
+    source: "Muse Indonesia",
+    episodes: [
+      { title: "Episode 1", videoId: "" },
+      { title: "Episode 2", videoId: "" },
+      { title: "Episode 3", videoId: "" }
+    ]
+  },
+  {
+    id: 4,
+    title: "Anime Pilihan 4",
+    genre: "Aksi",
+    poster: "ANIME 04",
+    description: "Ganti dengan deskripsi anime yang sebenarnya.",
+    source: "Muse Indonesia",
+    episodes: [
+      { title: "Episode 1", videoId: "" },
+      { title: "Episode 2", videoId: "" },
+      { title: "Episode 3", videoId: "" }
+    ]
+  }
+];
+
+const catalog = document.getElementById("catalog");
+const detail = document.getElementById("detail");
+const search = document.getElementById("search");
+const empty = document.getElementById("empty");
+const episodesBox = document.getElementById("episodes");
+let currentGenre = "Semua";
+let selectedAnime = null;
+let selectedEpisode = -1;
+
+function renderCatalog() {
+  catalog.innerHTML = "";
   const query = search.value.toLowerCase().trim();
-  let count = 0;
-  cards.forEach(card => {
-    const title = card.dataset.title;
-    const name = card.querySelector('h3').textContent.toLowerCase();
-    const matchText = title.includes(query) || name.includes(query);
-    const matchGenre = genre === 'Semua' ||
-      card.dataset.genre === genre;
-    card.hidden = !(matchText && matchGenre);
-    if (!card.hidden) count++;
+
+  const results = animeList.filter(anime => {
+    const matchName = anime.title.toLowerCase().includes(query);
+    const matchGenre = currentGenre === "Semua" ||
+      anime.genre === currentGenre;
+    return matchName && matchGenre;
   });
-  document.getElementById('empty').hidden = count !== 0;
+
+  empty.hidden = results.length !== 0;
+
+  results.forEach(anime => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const poster = document.createElement("div");
+    poster.className = "poster";
+    poster.textContent = anime.poster;
+
+    const info = document.createElement("div");
+    info.className = "info";
+
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = anime.genre.toUpperCase();
+
+    const title = document.createElement("h3");
+    title.textContent = anime.title;
+
+    const desc = document.createElement("p");
+    desc.textContent = anime.description;
+
+    const button = document.createElement("button");
+    button.className = "choose primary";
+    button.textContent = "Pilih episode →";
+    button.addEventListener("click", () => openAnime(anime.id));
+
+    info.append(tag, title, desc, button);
+    card.append(poster, info);
+    catalog.append(card);
+  });
 }
 
-search.addEventListener('input', updateCatalog);
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    genre = button.dataset.genre;
-    buttons.forEach(b => b.classList.toggle('active', b === button));
-    updateCatalog();
+function openAnime(id) {
+  selectedAnime = animeList.find(anime => anime.id === id);
+  selectedEpisode = -1;
+
+  document.getElementById("detailTitle").textContent =
+    selectedAnime.title;
+  document.getElementById("detailGenre").textContent =
+    selectedAnime.genre.toUpperCase();
+  document.getElementById("detailDescription").textContent =
+    selectedAnime.description;
+  document.getElementById("playerTitle").textContent =
+    "Pemutar video";
+  document.getElementById("sourceInfo").textContent =
+    "Sumber video: " + selectedAnime.source +
+    ". Pastikan setiap tautan berasal dari kanal resmi.";
+
+  renderEpisodes();
+
+  document.getElementById("player").innerHTML =
+    '<div class="player-placeholder">Pilih episode untuk memulai.</div>';
+
+  catalog.hidden = true;
+  document.querySelector(".filters").hidden = true;
+  document.querySelector("main > h2").hidden = true;
+  empty.hidden = true;
+  detail.hidden = false;
+
+  detail.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function renderEpisodes() {
+  episodesBox.innerHTML = "";
+
+  selectedAnime.episodes.forEach((episode, index) => {
+    const button = document.createElement("button");
+    button.className = "episode" +
+      (index === selectedEpisode ? " active" : "");
+
+    const title = document.createElement("strong");
+    title.textContent = episode.title;
+
+    const status = document.createElement("span");
+    status.textContent = episode.videoId
+      ? "▶ Siap ditonton"
+      : "Tautan belum diisi";
+
+    button.append(title, status);
+    button.addEventListener("click", () => playEpisode(index));
+    episodesBox.append(button);
+  });
+}
+
+function playEpisode(index) {
+  const episode = selectedAnime.episodes[index];
+  selectedEpisode = index;
+  renderEpisodes();
+
+  document.getElementById("playerTitle").textContent =
+    episode.title;
+
+  const player = document.getElementById("player");
+  player.innerHTML = "";
+
+  if (!episode.videoId.trim()) {
+    const placeholder = document.createElement("div");
+    placeholder.className = "player-placeholder";
+    placeholder.textContent =
+      episode.title + " dipilih. ID video resmi belum diisi. " +
+      "Tambahkan ID video pada data anime di index.html.";
+    player.append(placeholder);
+    return;
+  }
+
+  // Hanya menerima ID video, bukan URL sembarang.
+  if (!/^[a-zA-Z0-9_-]{11}$/.test(episode.videoId)) {
+    const placeholder = document.createElement("div");
+    placeholder.className = "player-placeholder";
+    placeholder.textContent =
+      "ID video tidak valid. Periksa kembali ID YouTube.";
+    player.append(placeholder);
+    return;
+  }
+
+  const iframe = document.createElement("iframe");
+  iframe.src = "https://www.youtube-nocookie.com/embed/" +
+    encodeURIComponent(episode.videoId);
+  iframe.title = selectedAnime.title + " - " + episode.title;
+  iframe.allow =
+    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  iframe.allowFullscreen = true;
+  iframe.referrerPolicy = "strict-origin-when-cross-origin";
+  player.append(iframe);
+}
+
+document.getElementById("backButton").addEventListener("click", () => {
+  detail.hidden = true;
+  catalog.hidden = false;
+  document.querySelector(".filters").hidden = false;
+  document.querySelector("main > h2").hidden = false;
+  renderCatalog();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+search.addEventListener("input", renderCatalog);
+
+document.querySelectorAll("[data-genre]").forEach(button => {
+  button.addEventListener("click", () => {
+    currentGenre = button.dataset.genre;
+    document.querySelectorAll("[data-genre]").forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
+    renderCatalog();
   });
 });
+
+renderCatalog();
 </script>
 </body>
-  </html>
-  
+</html>
